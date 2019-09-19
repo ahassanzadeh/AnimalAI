@@ -38,7 +38,15 @@ ENV https_proxy ""
 # For example, if your agent requires the animalai-train library
 # you can add the following (remove if not needed):
 RUN pip install animalai-train
-
+RUN git clone https://github.com/beyretb/AnimalAI-Olympics.git
+RUN pip uninstall --yes tensorflow
+RUN pip install tensorflow-gpu==1.14
+RUN apt-get install unzip wget
+RUN wget https://www.doc.ic.ac.uk/~bb1010/animalAI/env_linux_v1.0.0.zip
+RUN mv env_linux_v1.0.0.zip AnimalAI-Olympics/env/
+RUN unzip AnimalAI-Olympics/env/env_linux_v1.0.0.zip -d AnimalAI-Olympics/env/
+WORKDIR /aaio/AnimalAI-Olympics/examples
+RUN sed -i 's/docker_training=False/docker_training=True/g' trainDopamine.py
 
 ########################################################################################################################
 
