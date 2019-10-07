@@ -21,6 +21,6 @@ Learner:
     hidden_units: 256
     num_layers: 1
     beta: 1.0e-2
-    max_steps: 5.0e6
+    max_steps: 5.0e3
     num_epoch: 3
 
