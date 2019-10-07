@@ -5,7 +5,7 @@ public class Goal : Prefab
 {
 
     public int numberOfGoals = 1;
-    public float reward = 1;
+    public float reward = 1000;
     public bool isMulti = false;
 
     void Awake()
