@@ -56,22 +56,34 @@ public class TrainingAgent : Agent, IPrefab
         _rigidBody = GetComponent<Rigidbody>();
         _rewardPerStep = agentParameters.maxStep > 0 ? -1f / agentParameters.maxStep : 0;
         _playerScript = GameObject.FindObjectOfType<PlayerControls>();
+        //Ali-added
+        goodgoal=GameObject.Find("GoodGoal");//Find the green ball(goal)
+
     }
 
     public override void CollectObservations()
     {
         Vector3 localVel = transform.InverseTransformDirection(_rigidBody.velocity);
         AddVectorObs(localVel);
+        //Ali-Added
+        AddVectorObs(Vector3.Distance(goodgoal.transform.position, this.transform.position)); // collect the distance information of the agent and goal
+        AddVectorObs(this.transform.position); // collect the agent postion informaiton
+        AddVectorObs(goodgoal.transform.position); // collect the goal ball postion information
+        AddVectorObs(goodgoal.transform.InverseTransformDirection(goodgoal.GetComponent<Rigidbody>().velocity));
+        // if you need to add more goals, like the multi goal or bad goal
+        // you have to add their postion informaiton here too    
     }
 
     public override void AgentAction(float[] vectorAction, string textAction)
     {
         int actionForward = Mathf.FloorToInt(vectorAction[0]);
         int actionRotate = Mathf.FloorToInt(vectorAction[1]);
-
+        //punish time consuming 
         moveAgent(actionForward, actionRotate);
-
+        // here all the reward has to be update for each time step
+        reward_distance=-(Vector3.Distance(goodgoal.transform.position, this.transform.position))/100.0f;
         AddReward(_rewardPerStep);
+        // if you have other good goal or bad goal, have to add reward here too, AddReawrd(somthing );
     }
 
     private void moveAgent(int actionForward, int actionRotate)
