@@ -96,21 +96,3 @@ mode. Here you can control the agent with the following:
 | C   | switch camera       |
 | R   | reset environment   |
 
-## Citing
-
-**Official Animal-AI Papers Coming Soon**. In the meantime please cite the [Nature: Machine Intelligence piece](https://rdcu.be/bBCQt) for any work involving the competition environment. 
-
-Crosby, M., Beyret, B., Halina M. [The Animal-AI Olympics](https://www.nature.com/articles/s42256-019-0050-3) Nature 
-Machine Intelligence 1 (5) p257 2019.
-
-## Unity ML-Agents
-
-The Animal-AI Olympics was built using [Unity's ML-Agents Toolkit.](https://github.com/Unity-Technologies/ml-agents)
-
-The Python library located in [animalai](animalai) is almost identical to 
-[ml-agents v0.7](https://github.com/Unity-Technologies/ml-agents/tree/master/ml-agents-envs). We only added the 
-possibility to change the configuration of arenas between episodes. The documentation for ML-Agents can be found 
-[here](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Python-API.md).
-
-Juliani, A., Berges, V., Vckay, E., Gao, Y., Henry, H., Mattar, M., Lange, D. (2018). [Unity: A General Platform for 
-Intelligent Agents.](https://arxiv.org/abs/1809.02627) *arXiv preprint arXiv:1809.02627*
